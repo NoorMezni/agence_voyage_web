@@ -1,0 +1,55 @@
+<app-navbar />
+
+<section class="contact-page">
+  <div class="overlay"></div>
+
+  <div class="info">
+    <span class="tag">Prenons contact</span>
+    <h1>Contactez<br/>notre équipe</h1>
+    <p>Une question sur une destination ? Un voyage sur mesure à planifier ? Notre équipe est là pour vous répondre.</p>
+
+    <div class="contacts">
+      <p>📍 Avenue Habib Bourguiba, Tunis 1000</p>
+      <p>📞 +216 71 000 000</p>
+      <p>✉️ contact&#64;tunisiawanders.tn</p>
+    </div>
+  </div>
+
+  <div class="card" *ngIf="!submitted">
+    <h2>Envoyez-nous un message</h2>
+    <p class="sub">Tous les champs sont obligatoires.</p>
+
+    <div class="field">
+      <label>Nom complet</label>
+      <input type="text" [(ngModel)]="form.nom" placeholder="Ex : Ahmed Ben Ali" [class.error]="errors['nom']" />
+      <span *ngIf="errors['nom']">{{ errors['nom'] }}</span>
+    </div>
+
+    <div class="field">
+      <label>Adresse e-mail</label>
+      <input type="email" [(ngModel)]="form.email" placeholder="Ex : ahmed@email.com" [class.error]="errors['email']" />
+      <span *ngIf="errors['email']">{{ errors['email'] }}</span>
+    </div>
+
+    <div class="field">
+      <label>Sujet</label>
+      <input type="text" [(ngModel)]="form.sujet" placeholder="Ex : Voyage à Djerba" [class.error]="errors['sujet']" />
+      <span *ngIf="errors['sujet']">{{ errors['sujet'] }}</span>
+    </div>
+
+    <div class="field">
+      <label>Message</label>
+      <textarea [(ngModel)]="form.message" placeholder="Décrivez votre demande..." rows="5" [class.error]="errors['message']"></textarea>
+      <span *ngIf="errors['message']">{{ errors['message'] }}</span>
+    </div>
+
+    <button (click)="onSubmit()">Envoyer le message</button>
+  </div>
+
+  <div class="card success" *ngIf="submitted">
+    <h3>Message envoyé !</h3>
+    <p>Merci de nous avoir contactés. Notre équipe vous répondra dans les plus brefs délais.</p>
+    <button (click)="reset()">Envoyer un autre message</button>
+  </div>
+</section>
+<app-footer />

@@ -1,0 +1,339 @@
+:host {
+  --navy: #1A3C5E;
+  --teal: #0097A7;
+  --amber: #F4A623;
+  --bg: #F8F9FB;
+  --white: #ffffff;
+  --text-primary: #1A3C5E;
+  --text-secondary: #6B7A8D;
+  --border: #E2E8F0;
+  --radius-card: 12px;
+  --radius-btn: 8px;
+  font-family: 'Inter', sans-serif;
+}
+
+.dashboard-wrapper {
+  background: var(--bg);
+  min-height: 100vh;
+  padding: 2rem 2.5rem;
+}
+
+/* ── Header ── */
+.dashboard-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+}
+
+.dashboard-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin: 0 0 4px;
+  letter-spacing: -0.02em;
+}
+
+.dashboard-sub {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+/* ── Metric cards ── */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.metric-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 1.25rem 1.4rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  transition: box-shadow 0.2s;
+}
+
+.metric-card:hover {
+  box-shadow: 0 4px 16px rgba(26, 60, 94, 0.08);
+}
+
+.metric-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.metric-icon--navy {
+  background: rgba(26, 60, 94, 0.1);
+  color: var(--navy);
+}
+
+.metric-icon--teal {
+  background: rgba(0, 151, 167, 0.1);
+  color: var(--teal);
+}
+
+.metric-icon--amber {
+  background: rgba(244, 166, 35, 0.12);
+  color: var(--amber);
+}
+
+.metric-content {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.metric-label {
+  font-size: 0.75rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.metric-value {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.1;
+}
+
+.metric-delta {
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.metric-delta.up { color: #2E7D32; }
+.metric-delta.down { color: #C62828; }
+.metric-delta.neutral { color: var(--text-secondary); }
+
+/* ── Chart cards ── */
+.charts-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.chart-card {
+  background: var(--white);
+  border-radius: var(--radius-card);
+  border: 1px solid var(--border);
+  padding: 1.4rem 1.6rem;
+}
+
+.chart-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 1.25rem;
+}
+
+.chart-card-title {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.chart-badge {
+  font-size: 0.72rem;
+  font-weight: 600;
+  background: rgba(0, 151, 167, 0.1);
+  color: var(--teal);
+  padding: 3px 10px;
+  border-radius: 99px;
+}
+
+/* ── Bar chart ── */
+.bar-chart {
+  height: 160px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.bars-area {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  padding-bottom: 24px;
+  position: relative;
+}
+
+.bars-area::before {
+  content: '';
+  position: absolute;
+  bottom: 24px;
+  left: 0;
+  right: 0;
+  top: 0;
+  background: repeating-linear-gradient(
+    to top,
+    transparent,
+    transparent calc(25% - 0.5px),
+    #E2E8F0 calc(25% - 0.5px),
+    #E2E8F0 25%
+  );
+  pointer-events: none;
+}
+
+.bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  height: calc(100% - 0px);
+  justify-content: flex-end;
+  position: relative;
+}
+
+.bar-wrap {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.bar-tooltip {
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  opacity: 0;
+  transition: opacity 0.15s;
+  position: absolute;
+  top: -18px;
+  white-space: nowrap;
+}
+
+.bar-group:hover .bar-tooltip {
+  opacity: 1;
+}
+
+.bar {
+  width: 100%;
+  max-width: 36px;
+  background: #B5D4F4;
+  border-radius: 4px 4px 0 0;
+  transition: background 0.2s;
+  min-height: 4px;
+}
+
+.bar--current {
+  background: var(--teal);
+}
+
+.bar-group:hover .bar {
+  background: var(--navy);
+}
+
+.bar-group:hover .bar.bar--current {
+  background: var(--navy);
+}
+
+.bar-label {
+  font-size: 0.68rem;
+  color: var(--text-secondary);
+  position: absolute;
+  bottom: 0;
+}
+
+/* ── Donut chart ── */
+.donut-section {
+  display: flex;
+  align-items: center;
+  justify-content: center; /* Ajoute ceci pour centrer le bloc */
+  gap: 3rem;               /* Augmente l'espace entre le rond et la légende */
+}
+
+.donut-wrap {
+  flex-shrink: 0;
+  width: 140px;
+  height: 140px;
+}
+
+.donut-svg {
+  width: 100%;
+  height: 100%;
+}
+
+.donut-center-value {
+  font-size: 14px;
+  font-weight: 700;
+  fill: var(--navy);
+  font-family: 'Inter', sans-serif;
+}
+
+.donut-center-label {
+  font-size: 8px;
+  fill: var(--text-secondary);
+  font-family: 'Inter', sans-serif;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-info {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.legend-name {
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.legend-pct {
+  font-size: 0.72rem;
+  color: var(--text-secondary);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .metrics-grid {
+    grid-template-columns: 1fr;
+  }
+  .charts-grid {
+  display: grid;
+  grid-template-columns: 1fr auto; 
+  gap: 1rem;
+}
+  .dashboard-wrapper {
+    padding: 1.25rem;
+  }
+}
