@@ -1,0 +1,11 @@
+<section class="cta-section">
+  <div class="cta-inner">
+    <h2>Prêt à explorer la Tunisie ?</h2>
+    <p>Inscrivez-vous et recevez nos meilleures offres en avant-première</p>
+    <div class="cta-form">
+      <input type="email" placeholder="Votre adresse e-mail" [(ngModel)]="email" />
+      <button (click)="subscribe()">S'inscrire gratuitement</button>
+    </div>
+    <span *ngIf="subscribed" class="success-msg">Merci ! Vous êtes bien inscrit(e) ✓</span>
+  </div>
+</section>

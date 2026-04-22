@@ -1,0 +1,113 @@
+:host {
+  --tw-blue:    #1a3c5e;
+  --tw-accent:  #f5a623;
+  --tw-text:    #2d3748;
+  --tw-muted:   #4a5568;
+  --tw-white:   #ffffff;
+  --tw-border:  rgba(0, 0, 0, 0.08);
+  --tw-shadow:  0 2px 12px rgba(0, 0, 0, 0.08);
+  --radius:     8px;
+  --font:       'Poppins', 'Segoe UI', sans-serif;
+}
+
+.navbar__logo-img {
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+a { text-decoration: none; }
+ul { list-style: none; }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 32px;
+  height: 64px;
+  background: var(--tw-white);
+  border-bottom: 1px solid var(--tw-border);
+  box-shadow: var(--tw-shadow);
+  font-family: var(--font);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.navbar__brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.navbar__logo {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar__brand-name {
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--tw-blue);
+  letter-spacing: -0.3px;
+}
+
+.navbar__links {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  justify-content: center;
+}
+
+.navbar__link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--tw-muted);
+  padding: 6px 14px;
+  border-radius: var(--radius);
+  transition: color 0.2s, background 0.2s;
+}
+
+.navbar__link:hover {
+  color: var(--tw-blue);
+  background: rgba(26, 60, 94, 0.06);
+}
+
+.navbar__actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-shrink: 0;
+}
+
+.navbar__login {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--tw-muted);
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: color 0.2s;
+}
+
+.navbar__login:hover {
+  color: var(--tw-blue);
+}
+
+.navbar__signup {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--tw-white);
+  background: var(--tw-accent);
+  padding: 9px 22px;
+  border-radius: var(--radius);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.navbar__signup:hover {
+  background: #e0951a;}

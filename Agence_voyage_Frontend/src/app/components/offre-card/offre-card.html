@@ -1,0 +1,37 @@
+<section class="destinations-section">
+  <div class="container">
+    <div class="section-top">
+      <div>
+        <h2>Destinations populaires</h2>
+        <p>Les voyages les plus demandés par nos clients</p>
+      </div>
+      <a href="#" class="see-all">Voir tout <span>›</span></a>
+    </div>
+
+    <div class="cards-grid">
+      <div class="dest-card" *ngFor="let dest of destinations">
+        <div class="card-image">
+          <img [src]="dest.image" [alt]="dest.name" />
+          <span *ngIf="dest.badge"
+                class="badge"
+                [class.badge-bestseller]="dest.badgeType === 'bestseller'"
+                [class.badge-promo]="dest.badgeType === 'promo'">
+            {{ dest.badge }}
+          </span>
+        </div>
+        <div class="card-body">
+          <h3>{{ dest.name }}</h3>  
+          <div class="stars-row">
+            <span *ngFor="let star of getStars(dest.rating)"
+                  class="star"
+                  [class.full]="star === 'full'"
+                  [class.half]="star === 'half'">★</span>
+            <span class="reviews">({{ dest.reviews }} avis)</span>
+          </div>
+          <p class="price">À partir de {{ dest.price }} DT</p>
+          <span class="price-label">par personne</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

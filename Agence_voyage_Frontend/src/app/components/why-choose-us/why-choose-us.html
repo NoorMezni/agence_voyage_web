@@ -1,0 +1,19 @@
+<section class="why-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="badge-label">POURQUOI NOUS ?</span>
+      <h2>Voyagez l'esprit tranquille</h2>
+      <p>Des services pensés pour que votre voyage soit inoubliable</p>
+    </div>
+
+    <div class="features-grid">
+      <div class="feature-card" *ngFor="let feature of features">
+        <div class="icon-wrapper" [ngStyle]="{'background': feature.bgColor}">
+          <img [src]="feature.icon" [alt]="feature.title" width="32" height="32" />
+        </div>
+        <h3>{{ feature.title }}</h3>
+        <p>{{ feature.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>

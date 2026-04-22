@@ -1,0 +1,28 @@
+<nav class="navbar">
+    <a class="navbar__brand" routerLink="/">
+   <div class="navbar__logo">
+      <img src="/assets/icons/logo.png" alt="TunisiaWanders logo" class="navbar__logo-img">
+    </div>
+
+  <span class="navbar__brand-name">TunisiaWanders</span>
+</a>
+  
+
+  <ul class="navbar__links">
+    <li><a href="#" class="navbar__link">Destinations</a></li>
+    <li><a href="#" class="navbar__link">Offres</a></li>
+    <li><a href="#" class="navbar__link">À propos</a></li>
+    <li><a routerLink="/contact" class="navbar__link">Contact</a></li>  </ul>
+
+  <div class="navbar__actions">
+    <a href="#" class="navbar__login">Se connecter</a>
+    <a href="#" class="navbar__signup">S'inscrire</a>
+  </div>
+
+  <button class="navbar__hamburger" aria-label="Menu" (click)="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
