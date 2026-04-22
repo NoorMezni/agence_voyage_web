@@ -1,0 +1,191 @@
+:host {
+  --navy:  #1A3C5E;
+  --teal:  #0097A7;
+  --amber: #F4A623;
+  --white: #ffffff;
+  --error: #e53e3e;
+  --muted: #4a5568;
+  --font:  'Poppins', 'Segoe UI', sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+.contact-page {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  padding: 60px 6%;
+  gap: 40px;
+  font-family: var(--font);
+  background: url('/img1.png') center/cover no-repeat fixed;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(26,60,94,0.82), rgba(0,151,167,0.60));
+}
+
+/* Info left */
+.info {
+  position: relative;
+  z-index: 1;
+  flex: 1;
+  max-width: 420px;
+  color: var(--white);
+}
+
+.tag {
+  display: inline-block;
+  border: 1px solid var(--amber);
+  color: var(--amber);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+}
+
+.info h1 {
+  font-size: 2.8rem;
+  font-weight: 700;
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.info > p {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(255,255,255,0.82);
+  margin-bottom: 40px;
+}
+
+.contacts {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  font-size: 0.9rem;
+}
+
+/* Card right */
+.card {
+  position: relative;
+  z-index: 1;
+  width: 460px;
+  background: var(--white);
+  border-radius: 20px;
+  padding: 44px 40px;
+  box-shadow: 0 12px 50px rgba(0,0,0,0.25);
+}
+
+.card h2 {
+  font-size: 1.55rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 4px;
+}
+
+.sub {
+  font-size: 0.82rem;
+  color: var(--muted);
+  margin-bottom: 24px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 16px;
+}
+
+.field label {
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--navy);
+}
+
+.field input,
+.field textarea {
+  padding: 11px 14px;
+  border: 1.5px solid #e2e8f0;
+  border-radius: 12px;
+  font-family: var(--font);
+  font-size: 0.88rem;
+  color: var(--navy);
+  background: #F8F9FB;
+  outline: none;
+  resize: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: var(--teal);
+  box-shadow: 0 0 0 3px rgba(0,151,167,0.12);
+  background: var(--white);
+}
+
+.field input.error,
+.field textarea.error { border-color: var(--error); }
+
+.field span {
+  font-size: 0.76rem;
+  color: var(--error);
+  font-weight: 500;
+}
+
+.card button {
+  width: 100%;
+  padding: 13px;
+  background: var(--amber);
+  color: var(--white);
+  font-family: var(--font);
+  font-size: 0.93rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  margin-top: 8px;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.card button:hover { background: #e0951a; transform: translateY(-1px); }
+
+/* Success */
+.success {
+  text-align: center;
+  width: 400px;
+}
+
+.success h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 10px;
+}
+
+.success p {
+  color: var(--muted);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  margin-bottom: 16px;
+}
+
+.success button {
+  width: auto;
+  background: transparent;
+  border: 2px solid var(--teal);
+  color: var(--teal);
+}
+
+.success button:hover { background: var(--teal); color: var(--white); }
+
+@media (max-width: 900px) {
+  .contact-page { flex-direction: column; padding: 40px 24px; background-attachment: scroll; }
+  .card, .success { width: 100%; }
+  .info h1 { font-size: 2rem; }
+}
