@@ -19,9 +19,13 @@ db.getConnection()
 // ── Routes ──
 import dashboardRoutes from './routes/dashboard.routes';
 import usersRoutes from './routes/users.routes';
+import reservationsRoutes from './routes/reservations.routes';
+import paiementsRoutes from './routes/paiements.routes';
 
 app.use('/api/dashboard', dashboardRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/reservations', reservationsRoutes);
+app.use('/api/paiements', paiementsRoutes);
 
 
 // ── Lancement serveur ──

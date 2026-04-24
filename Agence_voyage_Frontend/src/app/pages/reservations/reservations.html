@@ -1,0 +1,71 @@
+<app-navbar />
+
+<section class="reservations-page">
+  <header class="reservations-header">
+    <div>
+      <h1>Mes reservations</h1>
+      <p>Suivez vos voyages, votre statut et vos paiements.</p>
+    </div>
+    <a class="new-btn" routerLink="/reservations/new">Nouvelle reservation</a>
+  </header>
+
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="alert" *ngIf="loading">Chargement en cours...</div>
+
+  <div class="empty-state" *ngIf="!loading && !errorMessage && reservations.length === 0">
+    <h2>Aucune reservation pour le moment</h2>
+    <p>Commencez par creer votre premiere reservation.</p>
+    <a class="new-btn" routerLink="/reservations/new">Reserver maintenant</a>
+  </div>
+
+  <div class="table-wrap" *ngIf="!loading && reservations.length > 0">
+    <table>
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Offre</th>
+          <th>Personnes</th>
+          <th>Total</th>
+          <th>Statut</th>
+          <th>Paiement</th>
+          <th>Date</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let reservation of reservations">
+          <td>{{ reservation.id }}</td>
+          <td>{{ reservation.offre_titre || ('Offre ' + reservation.offre_id) }}</td>
+          <td>{{ reservation.nb_personnes }}</td>
+          <td>{{ reservation.prix_total | number:'1.0-2' }} TND</td>
+          <td>
+            <span class="badge" [class.waiting]="reservation.statut === 'en_attente'"
+              [class.confirmed]="reservation.statut === 'confirmee'"
+              [class.cancelled]="reservation.statut === 'annulee'">
+              {{ statusLabel(reservation.statut) }}
+            </span>
+          </td>
+          <td>{{ paymentLabel(reservation.paiement_statut) }}</td>
+          <td>{{ reservation.date_reservation | date:'dd/MM/yyyy HH:mm' }}</td>
+          <td class="actions">
+            <a class="link-btn" [routerLink]="['/reservations', reservation.id]">Details</a>
+            <button
+              class="danger-btn"
+              [disabled]="!canCancel(reservation)"
+              (click)="onCancelReservation(reservation.id)">
+              Annuler
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="pagination">
+      <button (click)="previousPage()" [disabled]="page <= 1 || loading">Precedent</button>
+      <span>Page {{ page }} / {{ totalPages }} · {{ total }} reservation(s)</span>
+      <button (click)="nextPage()" [disabled]="page >= totalPages || loading">Suivant</button>
+    </div>
+  </div>
+</section>
+
+<app-footer />

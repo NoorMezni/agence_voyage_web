@@ -3,6 +3,7 @@ import { CommonModule, DecimalPipe, DatePipe } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Navbar } from '../../components/navbar/navbar';
 import { Footer } from '../../components/footer/footer';
+import { environment } from '../../../environments/environment';
 
 interface MonthStat {
   month: string;
@@ -53,7 +54,7 @@ export class Dashboard implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.http.get<any>('http://localhost:3000/api/dashboard/stats').subscribe({
+    this.http.get<any>(`${environment.apiBaseUrl}/dashboard/stats`).subscribe({
       next: (data) => {
         console.log('data reçu :', data);
 

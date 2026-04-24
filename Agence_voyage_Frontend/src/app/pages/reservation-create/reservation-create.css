@@ -1,0 +1,88 @@
+:host {
+  --bg: #f4f8ff;
+  --surface: #ffffff;
+  --border: #d8e3f1;
+  --text: #1b2b40;
+}
+
+.create-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  background: linear-gradient(140deg, #ebf3ff 0%, #fff8e7 100%);
+}
+
+.create-card {
+  width: min(560px, 100%);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 1.2rem;
+}
+
+.create-card h1 {
+  margin: 0;
+  color: var(--text);
+}
+
+.subtitle {
+  margin-top: 0.4rem;
+  color: #5a6e8a;
+}
+
+.field {
+  margin-top: 1rem;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: 0.4rem;
+}
+
+input {
+  width: 100%;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.7rem;
+  font-size: 1rem;
+}
+
+.actions {
+  margin-top: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+button {
+  border: 0;
+  background: #1a3c5e;
+  color: #fff;
+  padding: 0.65rem 1rem;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+a {
+  color: #1a3c5e;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.alert {
+  margin-top: 1rem;
+  border: 1px solid #f1c1c1;
+  color: #8f2424;
+  background: #fff4f4;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+}

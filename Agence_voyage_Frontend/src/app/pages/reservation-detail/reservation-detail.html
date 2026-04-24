@@ -1,0 +1,76 @@
+<app-navbar />
+
+<section class="detail-page">
+  <div class="toolbar">
+    <a routerLink="/reservations" class="back-link">Retour a la liste</a>
+  </div>
+
+  <div class="alert error" *ngIf="errorMessage">{{ errorMessage }}</div>
+  <div class="alert" *ngIf="loading">Chargement en cours...</div>
+
+  <article class="detail-card" *ngIf="!loading && reservation">
+    <header class="detail-header">
+      <div>
+        <h1>Reservation #{{ reservation.id }}</h1>
+        <p>{{ reservation.offre_titre || ('Offre ' + reservation.offre_id) }}</p>
+      </div>
+      <span class="status" [class.waiting]="reservation.statut === 'en_attente'"
+        [class.confirmed]="reservation.statut === 'confirmee'"
+        [class.cancelled]="reservation.statut === 'annulee'">
+        {{ reservationStatusLabel(reservation.statut) }}
+      </span>
+    </header>
+
+    <div class="detail-grid">
+      <div>
+        <h3>Informations generales</h3>
+        <p><strong>Nombre de personnes:</strong> {{ reservation.nb_personnes }}</p>
+        <p><strong>Prix total:</strong> {{ reservation.prix_total | number:'1.0-2' }} TND</p>
+        <p><strong>Date de reservation:</strong> {{ reservation.date_reservation | date:'dd/MM/yyyy HH:mm' }}</p>
+      </div>
+
+      <div>
+        <h3>Offre</h3>
+        <p><strong>Depart:</strong> {{ reservation.date_depart | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Retour:</strong> {{ reservation.date_retour | date:'dd/MM/yyyy' }}</p>
+        <p><strong>Prix unitaire actuel:</strong> {{ reservation.offre_prix || 0 | number:'1.0-2' }} TND</p>
+      </div>
+    </div>
+
+    <div class="actions">
+      <button class="danger-btn" [disabled]="reservation.statut === 'annulee'" (click)="cancelReservation()">
+        Annuler la reservation
+      </button>
+      <a class="ghost-btn" routerLink="/reservations/new">Creer une autre reservation</a>
+    </div>
+  </article>
+
+  <section class="payments-card" *ngIf="!loading && reservation">
+    <h2>Historique des paiements</h2>
+
+    <p class="muted" *ngIf="payments.length === 0">Aucun paiement pour cette reservation.</p>
+
+    <table *ngIf="payments.length > 0">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Montant</th>
+          <th>Methode</th>
+          <th>Statut</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let payment of payments">
+          <td>{{ payment.id }}</td>
+          <td>{{ payment.montant | number:'1.0-2' }} TND</td>
+          <td>{{ payment.methode }}</td>
+          <td>{{ paymentStatusLabel(payment.statut) }}</td>
+          <td>{{ payment.date_paiement | date:'dd/MM/yyyy HH:mm' }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+</section>
+
+<app-footer />

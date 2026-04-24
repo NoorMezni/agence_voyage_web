@@ -1,0 +1,30 @@
+<app-navbar />
+
+<section class="create-page">
+  <div class="create-card">
+    <h1>Nouvelle reservation</h1>
+    <p class="subtitle">Renseignez l offre et le nombre de voyageurs.</p>
+
+    <div class="alert error" *ngIf="validationError">{{ validationError }}</div>
+    <div class="alert error" *ngIf="apiError">{{ apiError }}</div>
+
+    <div class="field">
+      <label for="offre_id">ID de l offre</label>
+      <input id="offre_id" type="number" min="1" [(ngModel)]="form.offre_id" name="offre_id" />
+    </div>
+
+    <div class="field">
+      <label for="nb_personnes">Nombre de personnes</label>
+      <input id="nb_personnes" type="number" min="1" [(ngModel)]="form.nb_personnes" name="nb_personnes" />
+    </div>
+
+    <div class="actions">
+      <button (click)="submit()" [disabled]="submitting">
+        {{ submitting ? 'Creation...' : 'Creer la reservation' }}
+      </button>
+      <a routerLink="/reservations">Retour</a>
+    </div>
+  </div>
+</section>
+
+<app-footer />
