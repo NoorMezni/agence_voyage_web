@@ -1,0 +1,159 @@
+:host {
+  --bg: #f6f9fd;
+  --surface: #ffffff;
+  --border: #dce4ef;
+  --text: #1b2a3d;
+  --muted: #627289;
+}
+
+.detail-page {
+  min-height: 100vh;
+  padding: 1.5rem;
+  background: radial-gradient(circle at 85% 10%, #fff4d8 0%, transparent 35%),
+    radial-gradient(circle at 10% 0%, #e5f0ff 0%, transparent 30%),
+    var(--bg);
+}
+
+.toolbar {
+  margin-bottom: 1rem;
+}
+
+.back-link {
+  color: #1a3c5e;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.alert {
+  background: #ffffff;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.alert.error {
+  border-color: #efb6ba;
+  background: #fff5f6;
+  color: #8b2630;
+}
+
+.detail-card,
+.payments-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.detail-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.detail-header h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.detail-header p {
+  margin: 0.2rem 0 0;
+  color: var(--muted);
+}
+
+.status {
+  border-radius: 999px;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.status.waiting {
+  background: #fff3cf;
+  color: #7a5a00;
+}
+
+.status.confirmed {
+  background: #d8f4e6;
+  color: #20693f;
+}
+
+.status.cancelled {
+  background: #f8dde0;
+  color: #89262d;
+}
+
+.detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.detail-grid h3 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: 0.7rem;
+}
+
+.danger-btn,
+.ghost-btn {
+  border-radius: 8px;
+  padding: 0.55rem 0.85rem;
+  border: 1px solid #e2e8f0;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.danger-btn {
+  background: #fff6f6;
+  color: #a03030;
+  border-color: #efc4c4;
+}
+
+.ghost-btn {
+  background: #fff;
+  color: #1d2b40;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0.4rem;
+}
+
+th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+@media (max-width: 768px) {
+  .detail-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .actions {
+    flex-direction: column;
+  }
+}

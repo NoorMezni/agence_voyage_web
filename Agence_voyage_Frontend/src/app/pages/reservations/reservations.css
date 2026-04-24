@@ -1,0 +1,170 @@
+:host {
+  --bg: #f5f8fc;
+  --surface: #ffffff;
+  --border: #dfe8f3;
+  --text: #1d2b3f;
+  --muted: #5a6b82;
+  --primary: #1a3c5e;
+  --accent: #f5a623;
+  --danger: #c03b3b;
+}
+
+.reservations-page {
+  min-height: 100vh;
+  background: linear-gradient(160deg, #f3f8ff 0%, #f9f9f2 100%);
+  padding: 2rem;
+  color: var(--text);
+}
+
+.reservations-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.reservations-header h1 {
+  margin: 0 0 0.4rem;
+  font-size: 2rem;
+}
+
+.reservations-header p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.new-btn {
+  background: var(--primary);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 999px;
+  padding: 0.65rem 1rem;
+  font-weight: 600;
+}
+
+.alert {
+  margin: 1rem 0;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 0.8rem 1rem;
+}
+
+.alert.error {
+  border-color: #f5b6b6;
+  background: #fff4f4;
+  color: #8f2121;
+}
+
+.table-wrap {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 980px;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.9rem 1rem;
+  border-bottom: 1px solid var(--border);
+}
+
+th {
+  background: #f2f6fc;
+  font-size: 0.8rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.badge.waiting {
+  color: #7a5a00;
+  background: #fff3cf;
+}
+
+.badge.confirmed {
+  color: #1f6b44;
+  background: #d7f3e6;
+}
+
+.badge.cancelled {
+  color: #8f2121;
+  background: #fbdedf;
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.link-btn,
+.danger-btn {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.4rem 0.7rem;
+  font-size: 0.85rem;
+  text-decoration: none;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.danger-btn {
+  border-color: #f1c0c0;
+  color: var(--danger);
+}
+
+.danger-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.pagination button {
+  border: 1px solid var(--border);
+  background: #fff;
+  border-radius: 8px;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+}
+
+.empty-state {
+  background: var(--surface);
+  border: 1px dashed var(--border);
+  border-radius: 14px;
+  padding: 2rem;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .reservations-page {
+    padding: 1rem;
+  }
+
+  .reservations-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
